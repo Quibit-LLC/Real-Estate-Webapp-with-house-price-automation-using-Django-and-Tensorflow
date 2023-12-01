@@ -1,0 +1,193 @@
+{% extends 'base.html' %}
+{% block title %}Add House{% endblock %}
+{% block content %}
+<style>
+  /* styles.css */
+
+  /* Center the form on the page */
+  .form-container {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+
+  /* Reduce the width of the input boxes */
+  .form-control {
+    max-width: 300px;
+  }
+
+  /* Center the submit button */
+  .submit-btn {
+    margin: 0 auto;
+  }
+
+  /* Styling for the map container */
+  #map {
+    width: 100%;
+    height: 300px;
+    margin-bottom: 15px;
+  }
+</style>
+    <!-- ======= Intro Single ======= -->
+    <section class="intro-single">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 col-lg-8">
+            <div class="title-single-box">
+              <h1 class="title-single">Add House!</h1>
+              <span class="color-text-a">When adding a house listing to a real estate website or platform, it's essential to provide detailed and accurate information to attract potential buyers or renters.
+
+                To fill out these fields effectively, use clear and concise language in the description, upload well-lit and high-resolution photos, and ensure that all information is accurate and up to date. This comprehensive listing will attract potential buyers or renters and help them make informed decisions about the property.
+                <br>
+                <a class="navbar-brand" href="#"><button type="button" data-toggle="modal" data-target="#myModal" style="background-color: rgb(51, 232, 66);border-radius: 2rem;">Property Field Support</button></a>
+              </span>
+            </div>
+          </div>
+          <div class="col-md-12 col-lg-4">
+            <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                  <a href="{%url 'index'%}">Home</a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">
+                  Add House
+                </li>
+              </ol>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </section><!-- End Intro Single-->
+    <!--Modal div-->
+    <div class="container-fluid container " style="margin-top: 10px;">
+      <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+        
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Property Fields User Support </h4>
+            </div>
+            <div class="modal-body">
+              <span><h3>        Make your location is on for Coordinates mapping.<br> The required fields typically include:        <br>
+                1. **House:** Specify whether the property is a house, apartment, condo, etc.
+                <br>
+                2. **Location:** Enter the property's address or provide a map for accurate location information.
+                <br>
+                3. **Price:** State the selling or rental price of the house.
+                <br>
+                4. **Description:** Write a compelling and informative description of the property, highlighting its key features, such as the number of bedrooms, bathrooms, and any special amenities.
+                <br>
+                5. **Images:** Upload high-quality photos of the house, showcasing its interior and exterior.
+                <br>
+                6. **Square Footage:** Include the total living area or square footage of the property.
+                <br>
+                7. **Bedrooms and Bathrooms:** Specify the number of bedrooms and bathrooms in the house.
+                <br>
+                8. **Amenities:** List any additional features, such as a pool, garage, garden, or updated appliances.
+                <br></h3></span>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+<!-- template.html -->
+<div class="form-container">
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <!-- Display the RoomForm fields -->
+    {{ room_form.as_p }}
+
+    <!-- Add a heading for the images -->
+ 
+
+    <!-- Add a heading for the agent details -->
+    <h4>Agent Details</h4>
+    {{ agent_form.as_p }}
+
+    <!-- Map container -->
+    <div id="map"></div>
+
+    <input type="submit" class="btn btn-primary mt-3" value="Add House">
+  </form>
+</div>
+<!-- Include Leaflet.js library -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script>
+  // Leaflet.js map code (same as provided)
+  let map;
+  let marker;
+  const latitudeInput = document.getElementById("id_latitude");
+  const longitudeInput = document.getElementById("id_longitude");
+
+  function initMap() {
+    map = L.map('map').setView([0, 0], 8);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '© <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+    map.on('click', function (e) {
+      updateMarker(e.latlng);
+    });
+  }
+
+  function updateMarker(latLng) {
+    if (marker) {
+      marker.setLatLng(latLng);
+    } else {
+      marker = L.marker(latLng, { draggable: true }).addTo(map);
+    }
+
+    latitudeInput.value = latLng.lat;
+    longitudeInput.value = latLng.lng;
+
+    marker.on('dragend', function (e) {
+      const updatedLatLng = marker.getLatLng();
+      latitudeInput.value = updatedLatLng.lat;
+      longitudeInput.value = updatedLatLng.lng;
+    });
+  }
+
+  function handleLocationError(error) {
+    console.log(error.message);
+  }
+
+  function getLocation() {
+    if (navigator.permissions) {
+      navigator.permissions.query({ name: 'geolocation' }).then(function (result) {
+        if (result.state === 'granted') {
+          navigator.geolocation.getCurrentPosition(function (position) {
+            const latLng = L.latLng(position.coords.latitude, position.coords.longitude);
+            updateMarker(latLng);
+          }, handleLocationError);
+        } else if (result.state === 'prompt') {
+          navigator.geolocation.getCurrentPosition(function (position) {
+            const latLng = L.latLng(position.coords.latitude, position.coords.longitude);
+            updateMarker(latLng);
+          }, handleLocationError);
+        } else if (result.state === 'denied') {
+          console.log('Location access denied.');
+        }
+      });
+    } else if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(function (position) {
+        const latLng = L.latLng(position.coords.latitude, position.coords.longitude);
+        updateMarker(latLng);
+      }, handleLocationError);
+    } else {
+      console.log('Geolocation is not supported by this browser.');
+    }
+  }
+
+  window.addEventListener('load', function () {
+    initMap();
+    getLocation();
+  });
+  // ...
+</script>
+{% endblock %}

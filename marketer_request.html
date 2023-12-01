@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Photographer Application Form</title>
+</head>
+<body>
+    <h1 style="text-align: center;">Marketer Application Form</h1>
+    <form method="post" style="text-align: center;">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit"  class="btn btn-primary mt-3" >Submit Application</button>
+    </form>
+</body>
+</html>

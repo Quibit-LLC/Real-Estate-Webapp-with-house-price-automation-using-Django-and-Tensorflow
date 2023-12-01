@@ -1,0 +1,357 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Welcome KeJourney</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="{%static 'assets/img/kejani favicon.png'%}" rel="icon">
+  <link href="{%static 'assets/img/kejani logo.png'%}" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{%static 'assets1/assets/vendor/bootstrap/css/bootstrap.min.css'%}" rel="stylesheet">
+  <link href="{%static 'assets1/assets/vendor/bootstrap-icons/bootstrap-icons.css'%}" rel="stylesheet">
+  <link href="{%static 'assets1/assets/vendor/aos/aos.css'%}" rel="stylesheet">
+  <link href="{%static 'assets1/assets/vendor/glightbox/css/glightbox.min.css'%}" rel="stylesheet">
+  <link href="{%static 'assets1/assets/vendor/swiper/swiper-bundle.min.css'%}" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="{%static 'assets1/assets/css/main.css'%}" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: Impact
+  * Updated: May 30 2023 with Bootstrap v5.3.0
+  * Template URL: https://bootstrapmade.com/impact-bootstrap-business-website-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <section id="topbar" class="topbar d-flex align-items-center">
+    <div class="container d-flex justify-content-center justify-content-md-between">
+      <div class="contact-info d-flex align-items-center">
+        <i class="bi bi-envelope d-flex align-items-center"><a href="mailto:kejourney@gmail.com">kejourney@gmail.com</a></i>
+        <i class="bi bi-phone d-flex align-items-center ms-4"><span>+254 644 ***</span></i>
+      </div>
+      <div class="social-links d-none d-md-flex align-items-center">
+        <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
+        <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+        <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+        <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></i></a>
+      </div>
+    </div>
+  </section><!-- End Top Bar -->
+
+  <header id="header" class="header d-flex align-items-center">
+
+    <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
+      <a href="{%url 'index'%}" class="logo d-flex align-items-center">
+        <!-- Uncomment the line below if you also wish to use an image logo -->
+        <!-- <img src="assets/img/logo.png" alt=""> -->
+        <h1>KeJourney<span>.</span></h1>
+      </a>
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a href="{%url 'index'%}">Home</a></li>
+          <li><a href="{%url 'property'%}">Properties</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#portfolio">Kejourney Photographers</a></li>
+          <li><a href="#team">Kejourney Agents</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav><!-- .navbar -->
+
+      <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
+      <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
+
+    </div>
+  </header><!-- End Header -->
+  <!-- End Header -->
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero" class="hero">
+    <div class="container position-relative">
+      <div class="row gy-5" data-aos="fade-in">
+        <div class="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center text-center text-lg-start">
+          <h2>Welcome to <span>KeJourney</span></h2>
+          <p> KeJourney is an innovative real estate advertising web app with a mission to help users find their dream home. With a user-friendly interface, personalized search options, and expert guidance, KeJourney revolutionizes the home-hunting process, offering a seamless and transparent experience for aspiring homeowners. Join us on this extraordinary journey to discover the perfect place to call home. "KeJourney: Finding You Your Dream Home."</p>
+          {% if request.user.is_authenticated %}
+            <div class="d-flex justify-content-center justify-content-lg-start">
+                <a href="{%url 'logout'%}" class="btn-get-started">Logout as {{request.user}}</a>
+            </div>
+         {%else%}
+            <div class="d-flex justify-content-center justify-content-lg-start">
+                <a href="{%url 'signup'%}" class="btn-get-started">Sign Up</a>
+                <a href="{%url 'login'%}" class="btn-get-started" style="margin-left: 2rem;"><i class="bi bi-box-arrow-in-right"></i><span>Login</span></a>
+            </div>
+        {%endif%}
+        </div>
+        <div class="col-lg-6 order-1 order-lg-2">
+          <img src="{% static 'assets/img/kejani logo.png'%}" class="img-fluid" alt="" data-aos="zoom-out" data-aos-delay="100">
+        </div>
+      </div>
+    </div>
+
+    <div class="icon-boxes position-relative">
+      <div class="container position-relative">
+        <div class="row gy-4 mt-5">
+
+          <div class="col-xl-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="icon-box">
+              <div class="icon"><i class="bi bi-badge-ad-fill"></i></div>
+              <h4 class="title"><a href="{%url 'advertise'%}" class="stretched-link">Advertise with us your property</a></h4>
+            </div>
+          </div><!--End Icon Box -->
+
+          <div class="col-xl-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
+            <div class="icon-box">
+              <div class="icon"><i class="bi bi-search-heart-fill"></i></div>
+              <h4 class="title"><a href="{%url 'index'%}" class="stretched-link">Get your dream house with our personalized search</a></h4>
+            </div>
+          </div><!--End Icon Box -->
+
+          <div class="col-xl-3 col-md-6" data-aos="fade-up" data-aos-delay="300">
+            <div class="icon-box">
+              <div class="icon"><i class="bi bi-microsoft-teams"></i></div>
+              <h4 class="title"><a href="{%url 'agent_apply'%}" class="stretched-link">Join our elite Agency team</a></h4>
+            </div>
+          </div><!--End Icon Box -->
+
+          <div class="col-xl-3 col-md-6" data-aos="fade-up" data-aos-delay="500">
+            <div class="icon-box">
+              <div class="icon"><i class="bi bi-camera-fill"></i></div>
+              <h4 class="title"><a href=" class="stretched-link">Be our Pro Marketer</a></h4>
+            </div>
+          </div><!--End Icon Box -->
+
+        </div>
+      </div>
+    </div>
+
+    </div>
+  </section>
+  <!-- End Hero Section -->
+      <!-- ======= Stats Counter Section ======= -->
+      <section id="stats-counter" class="stats-counter">
+        <div class="container" data-aos="fade-up">
+  
+          <div class="row gy-4 align-items-center">
+  
+            <div class="col-lg-6">
+              <img src="{%static 'assets/img/property-10.jpg'%}" alt="" class="img-fluid" style="width: 80%; height:40%;">
+            </div>
+  
+            <div class="col-lg-6">
+              {% for house in house %}
+              <div class="stats-item d-flex align-items-center">
+                <span data-purecounter-start="0" data-purecounter-end="{{house.Rooms.all.count}}" data-purecounter-duration="1" class="purecounter"></span>
+                <p><strong>{{house.name}}</strong> listed properties </p>
+              </div><!-- End Stats Item -->
+              {%endfor%}
+  
+            </div>
+  
+          </div>
+  
+        </div>
+      </section><!-- End Stats Counter Section -->
+
+          <!-- ======= Pricing Section ======= -->
+    <section id="pricing" class="pricing sections-bg">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-header">
+          <h2>Pricing</h2>
+          <p>Aperiam dolorum et et wuia molestias qui eveniet numquam nihil porro incidunt dolores placeat sunt id nobis omnis tiledo stran delop</p>
+        </div>
+
+        <div class="row g-4 py-lg-5" data-aos="zoom-out" data-aos-delay="100">
+
+          <div class="col-lg-4">
+            <div class="pricing-item">
+              <h3>Pro Plan</h3>
+              <div class="icon">
+                <i class="bi bi-box"></i>
+              </div>
+              <h4><span>$ 2500</span></h4>
+              <ul>
+                <li><i class="bi bi-check"></i> Quam adipiscing vitae proin</li>
+                <li><i class="bi bi-check"></i> Nec feugiat nisl pretium</li>
+                <li><i class="bi bi-check"></i> Nulla at volutpat diam uteera</li>
+                <li class="na"><i class="bi bi-x"></i> <span>Pharetra massa massa ultricies</span></li>
+                <li class="na"><i class="bi bi-x"></i> <span>Massa ultricies mi quis hendrerit</span></li>
+              </ul>
+              <div class="text-center"><a href="#" class="buy-btn">Buy Now</a></div>
+            </div>
+          </div><!-- End Pricing Item -->
+
+          <div class="col-lg-4">
+            <div class="pricing-item featured">
+              <h3>Enterprise Agency Plan</h3>
+              <div class="icon">
+                <i class="bi bi-airplane"></i>
+              </div>
+
+              <h4><span>$ 5000</span></h4>
+              <ul>
+                <li><i class="bi bi-check"></i> Quam adipiscing vitae proin</li>
+                <li><i class="bi bi-check"></i> Nec feugiat nisl pretium</li>
+                <li><i class="bi bi-check"></i> Nulla at volutpat diam uteera</li>
+                <li><i class="bi bi-check"></i> Pharetra massa massa ultricies</li>
+                <li><i class="bi bi-check"></i> Massa ultricies mi quis hendrerit</li>
+              </ul>
+              <div class="text-center"><a href="#" class="buy-btn">Buy Now</a></div>
+            </div>
+          </div><!-- End Pricing Item -->
+
+          <div class="col-lg-4">
+            <div class="pricing-item">
+              <h3>UltraAgency Plan</h3>
+              <div class="icon">
+                <i class="bi bi-send"></i>
+              </div>
+              <h4><span>$ 8000</span></h4>
+              <ul>
+                <li><i class="bi bi-check"></i> Quam adipiscing vitae proin</li>
+                <li><i class="bi bi-check"></i> Nec feugiat nisl pretium</li>
+                <li><i class="bi bi-check"></i> Nulla at volutpat diam uteera</li>
+                <li><i class="bi bi-check"></i> Pharetra massa massa ultricies</li>
+                <li><i class="bi bi-check"></i> Massa ultricies mi quis hendrerit</li>
+              </ul>
+              <div class="text-center"><a href="#" class="buy-btn">Buy Now</a></div>
+            </div>
+          </div><!-- End Pricing Item -->
+
+        </div>
+
+      </div>
+    </section><!-- End Pricing Section -->
+
+          <!-- ======= Frequently Asked Questions Section ======= -->
+    <section id="faq" class="faq">
+        <div class="container" data-aos="fade-up">
+  
+          <div class="row gy-4">
+  
+            <div class="col-lg-4">
+              <div class="content px-xl-5">
+                <h3>Frequently Asked <strong>Questions</strong></h3>
+                <p>
+                    They explain how KeJourney allows users to easily find and view property listings matched to their criteria, as well as save favorites, get notifications, and connect with vetted local real estate agents for insights. Key differentiators highlighted include the personalized, seamless, and transparent experience offered to users compared to other platforms.
+                </p>
+              </div>
+            </div>
+  
+            <div class="col-lg-8">
+  
+              <div class="accordion accordion-flush" id="faqlist" data-aos="fade-up" data-aos-delay="100">
+  
+                <div class="accordion-item">
+                  <h3 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-1">
+                      <span class="num">1.</span>
+                      What is KeJourney?
+                    </button>
+                  </h3>
+                  <div id="faq-content-1" class="accordion-collapse collapse" data-bs-parent="#faqlist">
+                    <div class="accordion-body">
+                        KeJourney is a real estate advertising web application designed to help users find their dream home. It offers a personalized and user-friendly search experience to make the home-hunting process smoother.
+                    </div>
+                  </div>
+                </div><!-- # Faq item-->
+  
+                <div class="accordion-item">
+                  <h3 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-2">
+                      <span class="num">2.</span>
+                      How does KeJourney work?
+                    </button>
+                  </h3>
+                  <div id="faq-content-2" class="accordion-collapse collapse" data-bs-parent="#faqlist">
+                    <div class="accordion-body">
+                        KeJourney allows users to search for homes using customized filters like price, location, bedrooms, amenities etc. It uses smart technology to match users with suitable property listings. Users can save favorites, get notifications, and connect with real estate agents through the platform.
+                    </div>
+                  </div>
+                </div><!-- # Faq item-->
+  
+                <div class="accordion-item">
+                  <h3 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-3">
+                      <span class="num">3.</span>
+                      What makes KeJourney unique?
+                    </button>
+                  </h3>
+                  <div id="faq-content-3" class="accordion-collapse collapse" data-bs-parent="#faqlist">
+                    <div class="accordion-body">
+                        KeJourney stands out for its intuitive interface, robust search features, and seamless user experience. Unlike other platforms, it acts as a personalized real estate assistant guiding users through each step from search to sale. The transparency and expertise offered is unmatched.
+                    </div>
+                  </div>
+                </div><!-- # Faq item-->
+  
+                <div class="accordion-item">
+                  <h3 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-4">
+                      <span class="num">4.</span>
+                      Does KeJourney connect users with real estate agents?
+                    </button>
+                  </h3>
+                  <div id="faq-content-4" class="accordion-collapse collapse" data-bs-parent="#faqlist">
+                    <div class="accordion-body">
+                        Yes, one of KeJourney's key features is providing access to licensed real estate agents. Users can get expert guidance and local market insights from agents listed on the platform. Agents are carefully vetted to ensure a high-quality experience.
+                    </div>
+                  </div>
+                </div><!-- # Faq item-->
+  
+                <div class="accordion-item">
+                  <h3 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-5">
+                      <span class="num">5.</span>
+                      Is KeJourney available nationwide?
+                    </button>
+                  </h3>
+                  <div id="faq-content-5" class="accordion-collapse collapse" data-bs-parent="#faqlist">
+                    <div class="accordion-body">
+                        Currently, KeJourney operates in most major Kenya cities and metro areas. The platform is rapidly expanding to offer nationwide coverage. Users can search for homes or connect with agents from any location using KeJourney.
+                    </div>
+                  </div>
+                </div><!-- # Faq item-->
+  
+              </div>
+  
+            </div>
+          </div>
+  
+        </div>
+      </section><!-- End Frequently Asked Questions Section -->
+  <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <div id="preloader"></div>
+
+  <!-- Vendor JS Files -->
+  <script src="{%static 'assets1/assets/vendor/bootstrap/js/bootstrap.bundle.min.js'%}"></script>
+  <script src="{%static 'assets1/assets/vendor/aos/aos.js'%}"></script>
+  <script src="{%static 'assets1/assets/vendor/glightbox/js/glightbox.min.js'%}"></script>
+  <script src="{%static 'assets1/assets/vendor/purecounter/purecounter_vanilla.js'%}"></script>
+  <script src="{%static 'assets1/assets/vendor/swiper/swiper-bundle.min.js'%}"></script>
+  <script src="{%static 'assets1/assets/vendor/isotope-layout/isotope.pkgd.min.js'%}"></script>
+  <script src="{%static 'assets1/assets/vendor/php-email-form/validate.js'%}"></script>
+
+  <!-- Template Main JS File -->
+  <script src="{%static 'assets1/assets/js/main.js'%}"></script>
+</body>
+</html>

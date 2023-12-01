@@ -1,0 +1,349 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>{%block title%}{%endblock%}||KeJourney</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="{%static 'assets/img/kejani favicon.png'%}" rel="icon">
+  <link href="{%static 'assets/img/kejani logo.png'%}" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{%static 'assets/vendor/animate.css/animate.min.css'%}" rel="stylesheet">
+  <link href="{%static 'assets/vendor/bootstrap/css/bootstrap.min.css'%}" rel="stylesheet">
+  <link href="{%static 'assets/vendor/bootstrap-icons/bootstrap-icons.css'%}" rel="stylesheet">
+  <link href="{%static 'assets/vendor/swiper/swiper-bundle.min.css'%}" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+
+  <!-- Template Main CSS File -->
+  <link href="{%static 'assets/css/style.css'%}" rel="stylesheet">
+  <!--assets1 links-->
+  
+  <!-- =======================================================
+  * Template Name: EstateAgency
+  * Updated: May 30 2023 with Bootstrap v5.3.0
+  * Template URL: https://bootstrapmade.com/real-estate-agency-bootstrap-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+  <!-- ======= Property Search Section ======= -->
+  <div class="click-closed"></div>
+  <!--/ Form Search Star /-->
+  <div class="box-collapse">
+    <div class="title-box-d">
+      <h3 class="title-d">Search Property</h3>
+    </div>
+    <span class="close-box-collapse right-boxed bi bi-x"></span>
+    <div class="box-collapse-wrap form">
+      <form class="form-a">
+        <div class="row">
+          <div class="col-md-12 mb-2">
+            <div class="form-group">
+              <label class="pb-2" for="Type">Keyword</label>
+              <input type="text" class="form-control form-control-lg form-control-a" placeholder="Search Location">
+            </div>
+          </div>
+          <div class="col-md-6 mb-2">
+            <div class="form-group mt-3">
+              <label class="pb-2" for="Type">Status</label>
+              <select class="form-control form-select form-control-a" id="Type">
+                <option>Any Status</option>
+                <option>For Booking</option>
+                <option>For Rent</option>
+                <option>For Sale</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-6 mb-2">
+            <div class="form-group mt-3">
+              <label class="pb-2" for="Type">Property Type</label>
+              <select class="form-control form-select form-control-a" id="Type">
+                <option>Any Type</option>
+                <option>Apartment</option>
+                <option>House</option>
+                <option>Loft</option>
+                <option>PentHouse</option>
+                <option>Villa</option>
+                <option>Studio Apartment</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-6 mb-2">
+          </div>
+          <div class="col-md-6 mb-2">
+            <div class="form-group mt-3">
+              <label class="pb-2" for="bedrooms">Bedrooms</label>
+              <select class="form-control form-select form-control-a" id="bedrooms">
+                <option>Any</option>
+                <option>01</option>
+                <option>02</option>
+                <option>03</option>
+                <option>04</option>
+                <option>Above 4</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-6 mb-2">
+            <div class="form-group mt-3">
+              <label class="pb-2" for="bathrooms">Bathrooms</label>
+              <select class="form-control form-select form-control-a" id="bathrooms">
+                <option>Any</option>
+                <option>01</option>
+                <option>02</option>
+                <option>03</option>
+                <option>04</option>
+                <option>Above 4</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-6 mb-2">
+            <div class="form-group mt-3">
+              <label class="pb-2" for="price">Max Price</label>
+              <select class="form-control form-select form-control-a" id="price">
+                <option>Unlimited</option>
+                <option>$50,000</option>
+                <option>$100,000</option>
+                <option>$150,000</option>
+                <option>$200,000</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <button type="submit" class="btn btn-b">Search Property</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div><!-- End Property Search Section -->
+
+  <!-- ======= Header/Navbar ======= -->
+  <nav class="navbar navbar-default navbar-trans navbar-expand-lg fixed-top">
+    <div class="container">
+      <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarDefault" aria-controls="navbarDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <a class="navbar-brand text-brand" href="{%url 'index'%}"><span><img src="{%static 'assets/img/kejani favicon.png'%}" alt="#" style="height: 40px; width: 60px;"></span> Ke<span class="color-b">Journey</span></a>
+      {% if request.user.is_authenticated %}
+      <div class="navbar-collapse collapse justify-content-center" id="navbarDefault">
+        <ul class="navbar-nav">
+    
+          <li class="nav-item">
+            <a class="nav-link" href="{%url 'index'%}">Home</a>
+          </li>
+           <!-- <li class="nav-item">
+              <a class="nav-link " href="{%url 'add_house'%}">Add House</a>
+            </li>
+            {% if request.user.is_staff %}
+            <li class="nav-item">
+              <a class="nav-link " href="#">Add Agent</a>
+            </li>
+            {%endif%}-->
+          <li class="nav-item">
+            <a class="nav-link " href="{%url 'property'%}">Property</a>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Services</a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item " href="{%url 'advertise'%}">Advertise with us</a>
+              <a class="dropdown-item " href="#">Join our Agency Team</a>
+              <a class="dropdown-item " href="{%url 'predict_house_price'%}">Predict House Price</a>
+            </div>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Premium<sup style="background-color: aqua; border-radius: 2rem;">Lister</sup></a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item " href="{%url 'about'%}">Getting started</a>
+              <a class="dropdown-item " href="{%url 'add_house'%}">Pro<sup style="background-color: rgb(185, 247, 86); border-radius: 2rem;">View</sup></a>
+              <a class="dropdown-item " href="{%url 'agent_apply'%}">Enterprise<sup style="background-color: rgb(103, 116, 117); border-radius: 2rem;">View</sup></a>
+              <a class="dropdown-item " href="#">UltraAgent<sup style="background-color: rgb(148, 47, 235); border-radius: 2rem;">View</sup></a>
+            </div>
+          </li>
+    
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Profile</a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item " href="#" style="text-align: center;">Welcome, {{ request.user.username }}</a>
+              <a class="dropdown-item " href="#">Property Single</a>
+              <a class="dropdown-item " href="{%url 'login'%}">Switch Account</a>
+              <a class="dropdown-item " href="{%url 'logout'%}">Logout</a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " href="contact.html">Contact</a>
+          </li>
+        </ul>
+      </div>
+    
+      <button type="button" class="btn btn-b-n navbar-toggle-box navbar-toggle-box-collapse" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01">
+        <i class="bi bi-search"></i>
+      </button>
+    
+    </div>
+    {% else %}
+    <div class="navbar-collapse collapse justify-content-center" id="navbarDefault"></div>
+    {% endif %}
+    
+  </nav><!-- End Header/Navbar -->
+  <body>
+    <main style="margin-top: 120px;">
+        {%block content%}
+        {%endblock%}
+  </main> 
+   <!-- ======= Footer ======= -->
+   <section class="section-footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12 col-md-4">
+          <div class="widget-a">
+            <div class="w-header-a">
+              <h3 class="w-title-a text-brand">KeJourney</h3>
+            </div>
+            <div class="w-body-a">
+              <p class="w-text-a color-text-a">
+                KeJourney is an innovative real estate advertising web app with a mission to help users find their dream home. With a user-friendly interface, personalized search options, and expert guidance, KeJourney revolutionizes the home-hunting process, offering a seamless and transparent experience for aspiring homeowners. Join us on this extraordinary journey to discover the perfect place to call home. "KeJourney: Finding You Your Dream Home."
+              </p>
+            </div>
+            <div class="w-footer-a">
+              <ul class="list-unstyled">
+                <li class="color-a">
+                  <span class="color-text-a">Email .</span> kejourney@gmail.com
+                </li>
+                <li class="color-a">
+                  <span class="color-text-a">Phone .</span> +254 644 ***
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-12 col-md-3 section-md-t3">
+          <div class="widget-a">
+            <div class="w-header-a">
+              <h3 class="w-title-a text-brand">KeJourney</h3>
+            </div>
+            <div class="w-body-a">
+              <div class="w-body-a">
+                <ul class="list-unstyled">
+                  <li class="item-list-a">
+                    <i class="bi bi-chevron-right"></i> <a href="#">Site Map</a>
+                  </li>
+                  <li class="item-list-a">
+                    <i class="bi bi-chevron-right"></i> <a href="#">Legal</a>
+                  </li>
+                  <li class="item-list-a">
+                    <i class="bi bi-chevron-right"></i> <a href="#">Agent Admin</a>
+                  </li>
+                  <li class="item-list-a">
+                    <i class="bi bi-chevron-right"></i> <a href="#">Careers</a>
+                  </li>
+                  <li class="item-list-a">
+                    <i class="bi bi-chevron-right"></i> <a href="#">Affiliate</a>
+                  </li>
+                  <li class="item-list-a">
+                    <i class="bi bi-chevron-right"></i> <a href="#">Privacy Policy</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <nav class="nav-footer">
+            <ul class="list-inline">
+              <li class="list-inline-item">
+                <a href="#">Home</a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#">Property</a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#">Blog</a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#">Contact</a>
+              </li>
+            </ul>
+          </nav>
+          <div class="socials-a">
+            <ul class="list-inline">
+              <li class="list-inline-item">
+                <a href="#">
+                  <i class="bi bi-facebook" aria-hidden="true"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#">
+                  <i class="bi bi-twitter" aria-hidden="true"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#">
+                  <i class="bi bi-instagram" aria-hidden="true"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#">
+                  <i class="bi bi-linkedin" aria-hidden="true"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div class="copyright-footer">
+            <p class="copyright color-text-a">
+              &copy; Copyright
+              <span class="color-a">KeJourney</span> All Rights Reserved.
+            </p>
+          </div>
+          <div class="credits">
+            <!--
+            All the links in the footer should remain intact.
+            You can delete the links only if you purchased the pro version.
+            Licensing information: https://bootstrapmade.com/license/
+            Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=EstateAgency
+          -->
+            Designed by <a href="#">KeJourney Sole Proprietor</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer><!-- End  Footer -->
+
+  <div id="preloader"></div>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="{%static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js'%}"></script>
+  <script src="{%static 'assets/vendor/swiper/swiper-bundle.min.js'%}"></script>
+  <script src="{%static 'assets/vendor/php-email-form/validate.js'%}"></script>
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+  <!-- Template Main JS File -->
+  <script src="{%static 'assets/js/main.js'%}"></script>
+
+  </body>
+</html>

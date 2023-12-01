@@ -1,0 +1,328 @@
+{%extends 'base.html'%}
+{%block title%}Property Details{%endblock%}
+{%load static%}
+{%block content%}
+      <!-- ======= Property Single ======= -->
+      <style>
+        #property-single-carousel {
+  width: 100%; /* Set the container width to 100% to make it responsive */
+}
+
+/* Style for individual images */
+.carousel-item-b img {
+  max-width: 100%; /* Set the maximum width of the image to 100% */
+  height: auto; /* Allow the image height to adjust proportionally */
+}
+      </style>
+      <section class="property-single nav-arrow-b">
+        <div class="container">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="title-wrap d-flex justify-content-between">
+                  <div class="title-box">
+                    <h2 class="title-a">Property Details</h2>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row justify-content-center">
+              <div class="col-lg-8">
+                <div id="property-single-carousel" class="swiper">
+                  <div class="swiper-wrapper">
+                    <div class="carousel-item-b swiper-slide">
+                      <img src="{{room.image1.url}}" alt="">
+                    </div>
+                    <div class="carousel-item-b swiper-slide">
+                      <img src="{{room.image2.url}}" alt="">
+                    </div>
+                    <div class="carousel-item-b swiper-slide">
+                      <img src="{{room.image3.url}}" alt="">
+                    </div>
+                  </div>
+                </div>
+                <div class="property-single-carousel-pagination carousel-pagination"></div>
+              </div>
+            </div>
+
+          <div class="row">
+            <div class="col-sm-12">
+  
+              <div class="row justify-content-between">
+                <div class="col-md-5 col-lg-4">
+                  <div class="property-price d-flex justify-content-center foo">
+                    <div class="card-header-c d-flex">
+                      <div class="card-box-ico">
+                        <span class="bi bi-cash">$</span>
+                      </div>
+                      <div class="card-title-c align-self-center">
+                        <h5 class="title-c">{{room.price}}</h5>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="property-summary">
+                    <div class="row">
+                      <div class="col-sm-12">
+                        <div class="title-box-d section-t4">
+                          <h3 class="title-d">Quick Summary</h3>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="summary-list">
+                      <ul class="list">
+                        <li class="d-flex justify-content-between">
+                          <strong>Property ID:</strong>
+                          <span>{{room.id}}</span>
+                        </li>
+                        <li class="d-flex justify-content-between">
+                          <strong>Location:</strong>
+                          <span>{{room.location}} {{room.address}}</span>
+                        </li>
+                        <li class="d-flex justify-content-between">
+                          <strong>Property Type:</strong>
+                          <span>{{room.property_type}}</span>
+                        </li>
+                        <li class="d-flex justify-content-between">
+                          <strong>Status:</strong>
+                          <span>{{house.Rooms.name}}</span>
+                        </li>
+                        <li class="d-flex justify-content-between">
+                          <strong>Area:</strong>
+                          <span>{{room.size}}m
+                            <sup>2</sup>
+                          </span>
+                        </li>
+                        <li class="d-flex justify-content-between">
+                          <strong>Beds:</strong>
+                          <span>{{room.bedroom}}</span>
+                        </li>
+                        <li class="d-flex justify-content-between">
+                          <strong>Baths:</strong>
+                          <span>{{room.bathroom}}</span>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-7 col-lg-7 section-md-t3">
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <div class="title-box-d">
+                        <h3 class="title-d">Property Description</h3>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="property-description">
+                    <p class="description color-text-a">
+                      {{room.description}}
+                    </p>
+
+                  </div>
+                  <div class="row section-t3">
+                    <div class="col-sm-12">
+                      <div class="title-box-d">
+                        <h3 class="title-d">Amenities</h3>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="amenities-list color-text-a">
+                    <ul class="list-a no-margin">
+                      <li>{{room.amenities_1}}</li>
+                      <li>{{room.amenities_2}}</li>
+                      <li>{{room.amenities_3}}</li>
+                      <li>{{room.amenities_4}}</li>
+                    </ul>
+                  </div>
+                  <div class="row section-t3">
+                    <div class="col-sm-12">
+                      <div class="title-box-d">
+                        <h3 class="title-d">Amenities</h3>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="amenities-list color-text-a">
+                    <ul class="list-a no-margin">
+                      <li>{{room.proximal_services_1}}</li>
+                      <li>{{room.proximal_services_2}}</li>
+                      <li>{{room.proximal_services_3}}</li>
+                      <li>{{room.proximal_services_4}}</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-10 offset-md-1">
+              <ul class="nav nav-pills-a nav-pills mb-3 section-t3" id="pills-tab" role="tablist">
+                <li class="nav-item">
+                  <a class="nav-link active" id="pills-video-tab" data-bs-toggle="pill" href="#pills-video" role="tab" aria-controls="pills-video" aria-selected="true">Video</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" id="pills-map-tab" data-bs-toggle="pill" href="#pills-map" role="tab" aria-controls="pills-map" aria-selected="false">Location</a>
+                </li>
+              </ul>
+              <div class="tab-content" id="pills-tabContent">
+                <div class="tab-pane fade show active" id="pills-video" role="tabpanel" aria-labelledby="pills-video-tab">
+                  <video width="100%" height="460" controls>
+                      <source src="{{ room.video.url }}" type="{{ room.video.content_type }}">
+                  </video>
+                </div>
+                <div class="tab-pane fade" id="pills-plans" role="tabpanel" aria-labelledby="pills-plans-tab">
+                  <img src="{%static 'assets/img/plan2.jpg'%}" alt="" class="img-fluid">
+                </div>
+                <div class="tab-pane fade" id="pills-map" role="tabpanel" aria-labelledby="pills-map-tab">
+                  <!--src="https://www.google.com/maps/embed?center={{ room.latitude }},{{ room.longitude }}&zoom=15&size=400x300&key=YOUR_API_KEY"-->
+                  <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.1422937950147!3d{{ room.latitude }}!2d{{ room.longitude }}!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0:0x0!2z{{ room.latitude }},{{ room.longitude }}!5e0!3m2!1sen!2syour-location&output=embed"
+
+                      width="100%"
+                      height="460"
+                      frameborder="0"
+                      style="border:0"
+                      allowfullscreen
+                  ></iframe>
+               </div>              
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="row section-t3">
+                <div class="col-sm-12">
+                  <div class="title-box-d">
+                    <h3 class="title-d">Contact Agent</h3>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6 col-lg-4">
+                  <img src="{{agent.image.url}}" alt="" class="img-fluid">
+                </div>
+                <div class="col-md-6 col-lg-4">
+                  <div class="property-agent">
+                    <h4 class="title-agent">{{agent.name}}</h4>
+                    <ul class="list-unstyled">
+                      <li class="d-flex justify-content-between">
+                        <strong>Phone:</strong>
+                        <span class="color-text-a">(222) 4568932</span>
+                      </li>
+                      <li class="d-flex justify-content-between">
+                        <strong>Mobile:</strong>
+                        <span class="color-text-a">777 287 378 737</span>
+                      </li>
+                      <li class="d-flex justify-content-between">
+                        <strong>Email:</strong>
+                        <span class="color-text-a">annabella@example.com</span>
+                      </li>
+                      <li class="d-flex justify-content-between">
+                        <strong>Skype:</strong>
+                        <span class="color-text-a">Annabela.ge</span>
+                      </li>
+                    </ul>
+                    <div class="socials-a">
+                      <ul class="list-inline">
+                        <li class="list-inline-item">
+                          <a href="#">
+                            <i class="bi bi-facebook" aria-hidden="true"></i>
+                          </a>
+                        </li>
+                        <li class="list-inline-item">
+                          <a href="#">
+                            <i class="bi bi-twitter" aria-hidden="true"></i>
+                          </a>
+                        </li>
+                        <li class="list-inline-item">
+                          <a href="#">
+                            <i class="bi bi-instagram" aria-hidden="true"></i>
+                          </a>
+                        </li>
+                        <li class="list-inline-item">
+                          <a href="#">
+                            <i class="bi bi-linkedin" aria-hidden="true"></i>
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-12 col-lg-4">
+                  <div class="property-contact">
+                    <form class="form-a">
+                      <div class="row">
+                        <div class="col-md-12 mb-1">
+                          <div class="form-group">
+                            <input type="text" class="form-control form-control-lg form-control-a" id="inputName" placeholder="Name *" required>
+                          </div>
+                        </div>
+                        <div class="col-md-12 mb-1">
+                          <div class="form-group">
+                            <input type="email" class="form-control form-control-lg form-control-a" id="inputEmail1" placeholder="Email *" required>
+                          </div>
+                        </div>
+                        <div class="col-md-12 mb-1">
+                          <div class="form-group">
+                            <textarea id="textMessage" class="form-control" placeholder="Comment *" name="message" cols="45" rows="8" required></textarea>
+                          </div>
+                        </div>
+                        <div class="col-md-12 mt-3">
+                          <button type="submit" class="btn btn-a">Send Message</button>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section><!-- End Property Single-->
+
+      <!--Related houses section-->
+      <section>
+        {% for room in related_rooms%}
+        <div class="col-md-4">
+            <div class="card-box-a card-shadow">
+              <div class="img-box-a">
+                <img src="{{room.cover_image.url}}" alt="" class="img-a img-fluid">
+              </div>
+              <div class="card-overlay">
+                <div class="card-overlay-a-content">
+                  <div class="card-header-a">
+                    <h2 class="card-title-a">
+                      <a href="#">{{room.address}} {{room.name}}
+                        <br /> {{room.location}}</a>
+                    </h2>
+                  </div>
+                  <div class="card-body-a">
+                    <div class="price-box d-flex">
+                      <span class="price-a">rent | KSH {{room.price}}</span>
+                    </div>
+                    <a href="{% url 'detail' room.id %}" class="link-a">Click here to view
+                      <span class="bi bi-chevron-right"></span>
+                    </a>
+                  </div>
+                  <div class="card-footer-a">
+                    <ul class="card-info d-flex justify-content-around">
+                      <li>
+                        <h4 class="card-info-title">Area</h4>
+                        <span>{{room.size}}
+                          <sup>2</sup>
+                        </span>
+                      </li>
+                      <li>
+                        <h4 class="card-info-title">Beds</h4>
+                        <span>{{room.bedroom}}</span>
+                      </li>
+                      <li>
+                        <h4 class="card-info-title">Baths</h4>
+                        <span>{{room.bathroom}}</span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          {%endfor%}
+      </section>
+      <!--assets main folder js files-->
+      <!--assets1 js folder-->
+
+        <!-- Vendor JS Files -->
+{%endblock%}

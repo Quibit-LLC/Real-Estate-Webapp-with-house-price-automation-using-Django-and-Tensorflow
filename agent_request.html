@@ -1,0 +1,65 @@
+{%extends 'base.html'%}
+{%block title%}Home{%endblock%}
+{%load static%}
+{%block content%}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Real Estate Agent Application Form</title>
+    <link rel="stylesheet" href="{%static 'assets/vendor/bootstrap/css/bootstrap.min.css'%}">
+    <style>
+        .form-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f0f0f0; /* Dull background color */
+    border-radius: 5px;
+    }
+
+    .agent-form-container {
+        background-color: #e6f7ff; /* Different color for agent request form */
+    }
+    </style>
+</head>
+<body>
+        <!-- ======= Intro Single ======= -->
+        <section class="intro-single">
+            <div class="container">
+              <div class="row">
+                <div class="col-md-12 col-lg-8">
+                  <div class="title-single-box">
+                    <h1 class="title-single">Enterprise Premium View</h1>
+                    <span class="color-text-a">This page typically features a list of property listings, each represented by a thumbnail image. Users can click on these thumbnails to access detailed information about each property, including property type, location, price or rent details, and specific features like the number of bedrooms, bathrooms, square footage, and amenities. The page often offers various filtering and sorting options to help users refine their property search based on their preferences and requirements. </span>
+                  </div>
+                </div>
+                <div class="col-md-12 col-lg-4">
+                  <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
+                    <ol class="breadcrumb">
+                      <li class="breadcrumb-item">
+                        <a href="{%url 'index'%}">Home</a>
+                      </li>
+                      <li class="breadcrumb-item active" aria-current="page">
+                        Enterprise
+                      </li>
+                    </ol>
+                  </nav>
+                </div>
+              </div>
+            </div>
+          </section><!-- End Intro Single-->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 form-container">
+                <h1>Real Estate Agent Upload Form</h1>
+                <form method="post" class="photographer-form">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit" class="btn btn-primary">Submit Application</button>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>
+{%endblock%}

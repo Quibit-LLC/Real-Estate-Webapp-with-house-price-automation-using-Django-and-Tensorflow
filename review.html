@@ -1,0 +1,40 @@
+
+{% extends 'templates/base.html' %}
+{%load widget_tweaks%}
+{% block title %}Create Room{% endblock %}
+
+{% block content %}
+<style>
+  .messages {
+    list-style: none;
+    margin: 10px 0;
+    padding: 0;
+}
+
+.messages li {
+    padding: 10px;
+    border-radius: 4px;
+}
+
+.messages li.error {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+/* Add styles for other message types (e.g., success, warning, info) if needed */
+
+</style>
+{% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+
+<form method="post" enctype="multipart/form-data" style="background-color: burlywood; gap: 20px; margin-top: 30px;">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+{%endblock%}

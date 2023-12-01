@@ -1,0 +1,123 @@
+
+{%extends 'base.html'%}
+{%block title%}Property{%endblock%}
+{%load static%}
+{%block content%}
+      <style>
+            .hover-effect:hover {
+        color: rgb(177, 232, 10);
+    }
+      </style>
+             <!-- ======= Property Grid ======= -->
+      <section class="property-grid grid">
+    <!-- ======= Intro Single ======= -->
+    <section class="intro-single">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 col-lg-8">
+            <div class="title-single-box">
+              <h1 class="title-single">View all listed Properties</h1>
+              <span class="color-text-a">This page typically features a list of property listings, each represented by a thumbnail image. Users can click on these thumbnails to access detailed information about each property, including property type, location, price or rent details, and specific features like the number of bedrooms, bathrooms, square footage, and amenities. The page often offers various filtering and sorting options to help users refine their property search based on their preferences and requirements. </span>
+            </div>
+          </div>
+          <div class="col-md-12 col-lg-4">
+            <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                  <a href="{%url 'property'%}">Home</a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">
+                  Properties
+                </li>
+              </ol>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </section><!-- End Intro Single-->
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="grid-option">
+                <ul class="nav nav-tabs">
+                  {%for house in house%}
+                  <li class="nav-item">
+                    <a class="nav-link hover-effect" data-toggle="tab" href="{% url 'property' %}?query={{ query }}&house={{ house.id }}">{{ house.name }}</a>
+                  </li>
+                  {%endfor%}
+                </ul>
+              </div>
+            </div>
+            {% for room in room %}
+            <div class="col-md-4">
+                <div class="card-box-a card-shadow">
+                  <div class="img-box-a">
+                    <img src="{{room.cover_image.url}}" alt="" class="img-a img-fluid">
+                  </div>
+                  <div class="card-overlay">
+                    <div class="card-overlay-a-content">
+                      <div class="card-header-a">
+                        <h2 class="card-title-a">
+                          <a href="#">{{room.address}} {{room.name}}
+                            <br /> {{room.location}}</a>
+                        </h2>
+                      </div>
+                      <div class="card-body-a">
+                        <div class="price-box d-flex">
+                          <span class="price-a">rent | $ {{room.price}}</span>
+                        </div>
+                        <a href="{% url 'detail' room.id %}" class="link-a">Click here to view
+                          <span class="bi bi-chevron-right"></span>
+                        </a>
+                      </div>
+                      <div class="card-footer-a">
+                        <ul class="card-info d-flex justify-content-around">
+                          <li>
+                            <h4 class="card-info-title">Area</h4>
+                            <span>{{room.size}}
+                              <sup>2</sup>
+                            </span>
+                          </li>
+                          <li>
+                            <h4 class="card-info-title">Beds</h4>
+                            <span>{{room.bedroom}}</span>
+                          </li>
+                          <li>
+                            <h4 class="card-info-title">Baths</h4>
+                            <span>{{room.bathroom}}</span>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              {%endfor%}
+              <!--Pagination div-->
+              <div class="row">
+                <div class="col-sm-12">
+                  <nav class="pagination-a">
+                    <ul class="pagination justify-content-end" id="swiper-pagination"></ul>
+                  </nav>
+                </div>
+              </div>
+              </div>
+        </section><!-- End Property Grid Single-->
+        <script>
+          document.addEventListener("DOMContentLoaded", function () {
+            var swiper = new Swiper(".swiper-container", {
+              slidesPerView: 1, // Number of slides per view
+              spaceBetween: 30, // Space between each slide
+              pagination: {
+                el: "#swiper-pagination", // Use the custom pagination element
+                clickable: true, // Enable navigation by clicking on pagination bullets
+              },
+              navigation: {
+                nextEl: ".swiper-button-next", // Next button selector
+                prevEl: ".swiper-button-prev", // Previous button selector
+              },
+            });
+          });
+        </script>
+
+{%endblock%}
